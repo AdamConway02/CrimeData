@@ -1,0 +1,25 @@
+1 Install express where you want the server project to be created
+	express projectname
+2 navigate into the folder
+3 install http-server
+	npm install http-server
+4 install mysql
+	 npm install mysql
+5 run the command 
+	npm install
+6 Install Knex
+	npm install knex --save
+7 Install helmet
+	npm install helmet --save
+8 Install CORS
+	npm install cors
+9 Install swagger
+	npm i swagger-ui-express
+10 install json webstoken
+	npm i jsonwebtoken
+11 install bcryptjs
+	npm install bcryptjs
+
+	npm install
+now that you have those install you should be able to run the server with npm start
+

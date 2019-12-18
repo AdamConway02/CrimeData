@@ -1,0 +1,523 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Getting Started With crime API",
+        "description": "This is an express api based on the web_computing database.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://localhost"
+        }
+    ],
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Authentication"
+        },
+        {
+            "name": "Search"
+        },
+        {
+            "name": "Helpers"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logs user in",
+                "operationId": "login",
+                "produces": [
+                    "application/json"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "Example@email.com",
+                                        "description": "users email",
+                                        "required": true
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password",
+                                        "description": "users password",
+                                        "required": true
+                                    }
+                                },
+                                "example": {
+                                    "email": "Example@email.com",
+                                    "password": "password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Success": {
+                                            "type": "bool",
+                                            "example": "true",
+                                            "description": "Bool if login was succesful"
+                                        },
+                                        "err": {
+                                            "type": "string",
+                                            "example": "null",
+                                            "description": "error if there is one"
+                                        },
+                                        "token": {
+                                            "type": "String",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6WzE2XSwiaWF0IjoxNTU4NjcyOTM3LCJleHAiOjE1NTg3NTkzMzd9.l3VRfvgL2rhbcF-GwVUIOYD4MYjaWj8tEPUz9bJYWEU"
+                                        },
+                                        "access_token": {
+                                            "type": "String",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6WzE2XSwiaWF0IjoxNTU4NjcyOTM3LCJleHAiOjE1NTg3NTkzMzd9.l3VRfvgL2rhbcF-GwVUIOYD4MYjaWj8tEPUz9bJYWEU"
+                                        },
+                                        "token_type": {
+                                            "type": "String",
+                                            "example": "Bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": 86400
+                                        }
+                                    },
+                                    "example": {
+                                        "success": "true",
+                                        "err": "null",
+                                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6WzE2XSwiaWF0IjoxNTU4NjcyOTM3LCJleHAiOjE1NTg3NTkzMzd9.l3VRfvgL2rhbcF-GwVUIOYD4MYjaWj8tEPUz9bJYWEU",
+                                        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6WzE2XSwiaWF0IjoxNTU4NjcyOTM3LCJleHAiOjE1NTg3NTkzMzd9.l3VRfvgL2rhbcF-GwVUIOYD4MYjaWj8tEPUz9bJYWEU",
+                                        "token_type": "Bearer",
+                                        "expires_in": 86400
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "User does not exists - Username or password is incorrect - Error Logging into Account"
+                                        }
+                                    },
+                                    "example": {
+                                        "Message": "Username or password is incorrect"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register a new User ",
+                "operationId": "Register",
+                "produces": [
+                    "application/json"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "Example@email.com",
+                                        "description": "users email",
+                                        "required": true
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password",
+                                        "description": "users password",
+                                        "required": true
+                                    }
+                                },
+                                "example": {
+                                    "email": "Example@email.com",
+                                    "password": "password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "User added successfully!!!"
+                                        }
+                                    },
+                                    "example": {
+                                        "status": "success",
+                                        "Message": "Username or password is incorrect"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Failure"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "no username or password given - Account already exists - Error creating account"
+                                        }
+                                    },
+                                    "example": {
+                                        "status": "Failure",
+                                        "Message": "Username or password is incorrect"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Search": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "description": "Search the offence data",
+                "operationId": "Search",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Offence",
+                        "in": "query",
+                        "description": "The offence to search by",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Arson"
+                        }
+                    },
+                    {
+                        "name": "Area",
+                        "in": "query",
+                        "description": "List of Areas to filter search results by.",
+                        "schema": {
+                            "type": "string",
+                            "example": "Whitsunday Regional Council "
+                        }
+                    },
+                    {
+                        "name": "Age",
+                        "in": "query",
+                        "description": "List of Ages to filter search results by.",
+                        "schema": {
+                            "type": "string",
+                            "example": "Adult "
+                        }
+                    },
+                    {
+                        "name": "Gender",
+                        "in": "query",
+                        "description": "List of Genders to filter search results by.",
+                        "schema": {
+                            "type": "string",
+                            "example": "Male "
+                        }
+                    },
+                    {
+                        "name": "Year",
+                        "in": "query",
+                        "description": "List of years to filter search results by.",
+                        "schema": {
+                            "type": "integer",
+                            "example": 2001 
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "query": {
+                                            "type": "object",
+                                            "properties":{
+                                                "offence":{
+                                                    "type": "string",
+                                                    "example": "offance Homicde (Murder)"
+                                                }
+                                            }
+                                        },
+                                        "results":{
+                                            "type": "object",
+                                            "properties":{
+                                                "LGA":{
+                                                    "type": "string",
+                                                    "example": "Aurukun Shire Council"
+                                                },
+                                                "total":{
+                                                    "type":"integer",
+                                                    "example": 4
+                                                },
+                                                "lat":{
+                                                    "type":"float",
+                                                    "example": -27.470812
+                                                },
+                                                "lng":{
+                                                    "type":"integer",
+                                                    "example": 153.022455
+                                                }                                            
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Message": {
+                                            "type": "String",
+                                            "example": "No Offence query given"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Message": {
+                                            "type": "String",
+                                            "example": "Authentication Failed"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/offences": {
+            "get": {
+                "tags": [
+                    "Helpers"
+                ],
+                "description": "the list of offences for searches to be performed on",
+                "summary": "Gets the list of offences",
+                "operationId": "listoffences",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "offences": {
+                                            "type": "array",
+                                            "example":[ 
+                                                "Advertising Prostitution",
+                                                "Armed Robbery"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ages": {
+            "get": {
+                "tags": [
+                    "Helpers"
+                ],
+                "summary": "Gets the list of ages",
+                "operationId": "listages",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "ages": {
+                                            "type": "array",
+                                            "example": ["Adult","Juvenile"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/areas": {
+            "get": {
+                "tags": [
+                    "Helpers"
+                ],
+                "summary": "Gets the list of areas",
+                "operationId": "listareas",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "areas": {
+                                            "type": "array",
+                                            "example": ["Aurukun Shire Council","Balonne Shire Council"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/genders": {
+            "get": {
+                "tags": [
+                    "Helpers"
+                ],
+                "summary": "Gets the list of genders",
+                "operationId": "genders",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "genders": {
+                                            "type": "array",
+                                            "example": ["Male", "Female"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/years": {
+            "get": {
+                "tags": [
+                    "Helpers"
+                ],
+                "summary": "Gets the list of off years",
+                "operationId": "years",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "years": {
+                                            "type": "array",
+                                            "items": {
+                                                "type":"integer",
+                                                "example": [2001,2002]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

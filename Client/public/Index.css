@@ -1,0 +1,130 @@
+html{
+  background-size: cover;
+  background-image: linear-gradient(to bottom right, #e6e6e6, #99ceff);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size:cover;
+  min-height: 100%;
+
+}
+
+body {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.content {
+  margin-left: 50px;
+}
+
+.NavBarcontainer {
+  background-color: rgb(124, 121, 121);
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+
+.NavBarcontainer * {
+  display: block;
+  margin-left: 70px;
+}
+
+.NavBarcontainer a {
+  padding-top: 10px;
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+.image {
+  margin-top: 50px;
+  margin: 5px;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button {
+  background-position-y: 100px;
+  display: inline;
+  background: #4e9caf;
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.button:hover {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 1s;
+  color: black;
+  background-color: rgb(148, 211, 226);
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+table{
+  border-collapse: collapse;
+}
+th {
+  background-color: #b3b3cc;
+  color: Black;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+tr:nth-child(odd) {background-color: #cccccc;}
+
+
+th, td {
+  padding-left: 20px;
+  border:1px solid #000000;
+}
+
+td{
+  vertical-align: bottom;
+}
+
+.searchbutton{
+  margin-top: 10px
+}
+
+.refinebutton{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttoncontainer{
+  padding-top: 15px;
+}
+
+.map{
+  width: 100px;
+  height: 100px;
+}
